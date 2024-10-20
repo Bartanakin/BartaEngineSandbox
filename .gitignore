@@ -5,3 +5,4 @@ out
 .vs
 .vscode
 src/env.h
+cmake-build-debug

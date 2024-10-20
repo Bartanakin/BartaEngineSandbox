@@ -1,16 +1,17 @@
-#include <Collisions/CollisionLogger.h>
 #include "Sandbox.h"
-#include "Dynamics/ConstVelocityDynamicsUpdateStrategy.h"
 #include "Collisions/CollisionDetectionStrategies/DynamicCollisionDetectionStrategy.h"
+#include "Dynamics/ConstVelocityDynamicsUpdateStrategy.h"
 #include "Geometrics/Math/BartaMathLibrary.h"
 #include "Graphics/SFML_GraphicsBridge.h"
-#include <Objects/Rigid/RigidObjectRepository.h>
-#include <Objects/Rigid/RigidCompositeObject.h>
+#include <Collisions/CollisionLogger.h>
 #include <Dynamics/Timers/FrameLimitTimerProxy.h>
 #include <Dynamics/Timers/SFML_Timer.h>
 #include <Graphics/SpriteBuilder/SpriteMerger.h>
-#include <Objects/SimpleObject.h>
 #include <Hitbox/CircleHitbox.h>
+#include <Objects/Rigid/RigidCompositeObject.h>
+#include <Objects/Rigid/RigidObject.h>
+#include <Objects/Rigid/RigidObjectRepository.h>
+#include <Objects/SimpleObject.h>
 
 std::unique_ptr<Barta::TimerInterface> Sandbox::gameTimer = std::make_unique<Barta::FrameLimitTimerProxy>(
     std::make_unique<Barta::SFML_Timer>(),
@@ -111,6 +112,8 @@ Sandbox::Sandbox()
     this->objectManager->addGraphicsObject(static_cast<Barta::GraphicsDataAwareInterface*>(circles));
     this->objectManager->addDynamicsObject(static_cast<Barta::DynamicsAwareInterface*>(circles));
     this->objectManager->addNewObject(static_cast<Barta::BartaObjectInterface*>(circles));
+
+    this->collisionEventsLogger.logSubscriber(std::make_unique<Barta::StaticCollisionResponseSubscriberType<Barta::RigidObjectInterface, Barta::RigidObjectInterface>>(*this->postDynamicsEventLogger));
 }
 
 Sandbox::~Sandbox() {}

@@ -6,9 +6,9 @@ option(BUILD_SHARED_LIBS "Build using shared libraries" OFF)
 set(PROJECT_NAME "BESandbox")
 
 set(CMAKE_BUILD_TYPE Debug)
-set(CMAKE_C_COMPILER "C:/msys64/mingw64/bin/gcc.exe")
-set(CMAKE_CXX_COMPILER "C:/msys64/mingw64/bin/g++.exe")
-set(CMAKE_GENERATOR "Unix Makefiles")
+#set(CMAKE_C_COMPILER "C:/msys64/mingw64/bin/gcc.exe")
+#set(CMAKE_CXX_COMPILER "C:/msys64/mingw64/bin/g++.exe")
+#set(CMAKE_GENERATOR "Unix Makefiles")
 
 project(
     ${PROJECT_NAME}
@@ -40,8 +40,8 @@ include(Tools)
 #    include(Warnings)
 #endif()
 
-add_cmake_format_target()
-add_clang_format_target()
+#add_cmake_format_target()
+#add_clang_format_target()
 
 if(ENABLE_SANITIZE_ADDR OR ENABLE_SANITIZE_UNDEF)
     include(Sanitizer)
@@ -61,7 +61,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 include(FetchContent)
 FetchContent_Declare(BartaEngine_lib
-        SOURCE_DIR C:/Users/barta/Desktop/files/Cpp/BartaEngine2
+        SOURCE_DIR /home/bartanakin/repos/BartaEngine
 )
 FetchContent_MakeAvailable(BartaEngine_lib)
 

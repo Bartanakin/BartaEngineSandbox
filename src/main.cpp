@@ -7,7 +7,7 @@
 #include "Dynamics/Timers/SFML_Timer.h"
 
 int main() {
-	Barta::Application* app = new Sandbox();
+	auto app = new Sandbox();
 	app->run();
 	delete app;
 
