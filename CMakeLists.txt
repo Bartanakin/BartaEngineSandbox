@@ -6,9 +6,7 @@ option(BUILD_SHARED_LIBS "Build using shared libraries" OFF)
 set(PROJECT_NAME "BESandbox")
 
 set(CMAKE_BUILD_TYPE Debug)
-#set(CMAKE_C_COMPILER "C:/msys64/mingw64/bin/gcc.exe")
-#set(CMAKE_CXX_COMPILER "C:/msys64/mingw64/bin/g++.exe")
-#set(CMAKE_GENERATOR "Unix Makefiles")
+set(CMAKE_GENERATOR "Unix Makefiles")
 
 project(
     ${PROJECT_NAME}

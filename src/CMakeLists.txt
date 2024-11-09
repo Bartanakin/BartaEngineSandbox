@@ -1,6 +1,8 @@
 add_executable(${PROJECT_NAME}
         main.cpp
         Sandbox.cpp
+        Subscribers/TestSubscriber.cpp
+        Subscribers/TestSubscriber.h
 )
 
 if(WIN32)
