@@ -1,7 +1,6 @@
 #include "Sandbox.h"
 #include "Collisions/CollisionDetectionStrategies/DynamicCollisionDetectionStrategy.h"
 #include "Dynamics/ConstVelocityDynamicsUpdateStrategy.h"
-#include "Geometrics/Math/BartaMathLibrary.h"
 #include "Graphics/SFML_GraphicsBridge.h"
 #include "Hitbox/OBB_Hitbox.h"
 #include "Subscribers/TestSubscriber.h"
@@ -30,9 +29,8 @@ Sandbox::Sandbox()
           "Sandbox", std::make_unique<Barta::SFML_GraphicsBridge>(),
           *Sandbox::gameTimer, nullptr,
           std::make_unique<Barta::DynamicCollisionDetectionStrategy>(
-              std::make_unique<Barta::BartaMathLibrary>(), *Sandbox::gameTimer))
-// std::make_unique<Barta::StaticCollisionDetectionStrategy>(
-// std::make_unique<Barta::BartaMathLibrary>()))
+              *Sandbox::gameTimer))
+// std::make_unique<Barta::StaticCollisionDetectionStrategy>())
 {
   this->dynamicsUpdateStrategy =
       std::make_unique<Barta::ConstVelocityDynamicsUpdateStrategy<
