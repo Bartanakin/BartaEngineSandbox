@@ -9,4 +9,4 @@ bool TestSubscriber::handle(Barta::Events::RigidObjectRigidObject &event) {
     return true;
 }
 
-bool TestSubscriber::isValid() const noexcept { return true; }
+bool TestSubscriber::isToBeDeleted() const noexcept { return true; }

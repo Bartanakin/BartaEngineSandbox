@@ -9,7 +9,7 @@ class TestSubscriber: public Barta::Subscribers::RigidObjectRigidObject {
 public:
     bool handle(Barta::Events::RigidObjectRigidObject &event) override;
 
-    bool isValid() const noexcept override;
+    bool isToBeDeleted() const noexcept override;
 
 private:
     
