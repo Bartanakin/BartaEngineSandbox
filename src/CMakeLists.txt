@@ -3,6 +3,7 @@ add_executable(${PROJECT_NAME}
         Sandbox.cpp
         Subscribers/TestSubscriber.cpp
         Subscribers/TestSubscriber.h
+        ../../BartaEngine/include/Geometrics/Quaternion.h
 )
 
 if(WIN32)
