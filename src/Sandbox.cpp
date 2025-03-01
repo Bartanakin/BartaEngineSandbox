@@ -5,6 +5,9 @@
 #include "Hitbox/OBB_Hitbox.h"
 #include "Subscribers/TestSubscriber.h"
 
+#include "SceneLoader/ObjectJsonDecoder.h"
+#include "SceneLoader/ObjectJsonDecoderManager.h"
+#include "SceneLoader/RootJsonDecoder.h"
 #include <Collisions/CollisionDetectionStrategies/StaticCollisionDetectionStrategy.h>
 #include <Collisions/CollisionLogger.h>
 #include <Dynamics/Timers/FrameLimitTimerProxy.h>
@@ -14,11 +17,12 @@
 #include <Hitbox/CircleHitbox.h>
 #include <Objects/Rigid/RigidCompositeObject.h>
 #include <Objects/Rigid/RigidObject.h>
-#include <Objects/Rigid/RigidObjectRepository.h>
 #include <Objects/SimpleObject.h>
 
 // Very important to include this file! There are template specialisation
 // definitions.
+#include "Events/Subscribers/CollisionBrakeSubscriber.h"
+
 #include <Predefines.h>
 
 std::unique_ptr<Barta::TimerInterface> Sandbox::gameTimer =
@@ -30,37 +34,25 @@ Sandbox::Sandbox()
                   *Sandbox::gameTimer, nullptr,
                   // std::make_unique<Barta::DynamicCollisionDetectionStrategy>(
                   //     *Sandbox::gameTimer))
-std::make_unique<Barta::StaticCollisionDetectionStrategy>())
-{
+                  std::make_unique<Barta::StaticCollisionDetectionStrategy>()) {
   this->dynamicsUpdateStrategy =
       std::make_unique<Barta::ConstVelocityDynamicsUpdateStrategy<
           Barta::DynamicsAwareInterface::DynamicsAwareList>>(
           this->objectManager->getDynamicsList());
-  auto repository =
-      Barta::RigidObjectRepository(this->objectLists, *this->objectManager);
+  // json decoder configuration
+  auto jsonDecoder = Barta::SceneLoader::RootJsonDecoder<
+      Barta::SceneLoader::ObjectJsonDecoderManager<Barta::RigidObjectInterface>,
+      Barta::ListManager>(this->objectLists, *this->objectManager);
 
-  // auto ball1 = repository.addNewCircle(20.f, {255, 0, 255, 255});
-  // ball1->move({320.f, 100.f});
-  auto box1 = repository.addNewOBB({100.f, 40.}, -M_PI / 6., {255, 100, 0, 255});
-  box1->move({400.f,  260.f});
-  // box1->getDynamicsDTOs()[Barta::DynamicsDTOIteration::CURRENT].velocity = {
-  //     0.f, 60.f};
-  auto box = repository.addNewOBB({100.f, 40.}, M_PI / 6., {255, 255, 0, 255});
-  box->move({350.f, 250.f});
-  // box->getDynamicsDTOs()[Barta::DynamicsDTOIteration::CURRENT].velocity = {
-  //     0.f, -60.f};
-
-  // auto boundColor = Barta::Color(50, 191, 66, 255);
-  // auto leftBound = repository.addNewAABB({50.f, 650.f}, boundColor);
-  // leftBound->move({0.f, 0.f});
-  // auto topBound = repository.addNewAABB({650.f, 50.f}, boundColor);
-  // topBound->move({50.f, 0.f});
-  // auto rightBound = repository.addNewAABB({50.f, 650.f}, boundColor);
-  // rightBound->move({650.f, 50.f});
-  // auto bottomBound = repository.addNewAABB({650.f, 50.f}, boundColor);
-  // bottomBound->move({0.f, 650.f});
+  // scene file
+  std::fstream sceneFile("scenes/scene.json");
+  jsonDecoder.decode(json::parse(sceneFile));
 
   this->collisionEventsLogger.logSubscriber(std::make_shared<TestSubscriber>());
+    // collisions
+    this->collisionEventsLogger.logSubscriber(
+        std::make_unique<Barta::CollisionBrakeSubscriber<
+            Barta::RigidObjectInterface, Barta::RigidObjectInterface>>());
   this->collisionEventsLogger.logSubscriber(
       std::make_unique<Barta::StaticCollisionResponseSubscriberType<
           Barta::RigidObjectInterface, Barta::RigidObjectInterface>>());

@@ -67,6 +67,7 @@ add_subdirectory(src)
 
 target_link_libraries(${PROJECT_NAME} PUBLIC BartaEngine_lib)
 target_link_libraries(${PROJECT_NAME} PUBLIC sfml-graphics)
+target_link_libraries(${PROJECT_NAME} PUBLIC eigen)
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
 
 install(

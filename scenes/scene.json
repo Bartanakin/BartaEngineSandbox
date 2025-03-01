@@ -1,0 +1,89 @@
+{
+  "objects": [
+    {
+      "type": "BARTA_RIGID_OBJECT",
+      "z_index": 0,
+      "transformation": {
+        "a14": 140,
+        "a24": 100,
+        "a34": 0
+      },
+      "dynamicsData": {
+        "velocity": {
+          "x": 40,
+          "y": 0,
+          "z": 0
+        },
+        "hasInfiniteMass": false,
+        "mass": 1
+      },
+      "sprites": [
+        {
+          "type": "CIRCLE",
+          "radius": 10.0,
+          "center": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "color": {
+            "r": 255,
+            "g": 0,
+            "b": 0
+          }
+        }
+      ],
+      "hitbox": {
+        "type": "CIRCLE",
+        "radius": 10.0,
+        "center": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "type": "BARTA_RIGID_OBJECT",
+      "z_index": 0,
+      "transformation": {
+        "a11": 0.8660254,
+        "a12": -0.5000000,
+        "a21": 0.5000000,
+        "a22": 0.8660254,
+        "a14": 200,
+        "a24": 100,
+        "a34": 0
+      },
+      "sprites": [
+        {
+          "type": "RECTANGLE",
+          "origin": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "x": 100,
+            "y": 80,
+            "z": 0
+          },
+          "color": {
+            "r": 255,
+            "g": 0,
+            "b": 0
+          }
+        }
+      ],
+      "hitbox": {
+        "type": "OBB",
+        "size": {
+          "x": 100,
+          "y": 80,
+          "z": 0
+        },
+        "transformation": {}
+      }
+    }
+  ]
+}
