@@ -3,10 +3,9 @@ add_executable(${PROJECT_NAME}
         Sandbox.cpp
         Subscribers/TestSubscriber.cpp
         Subscribers/TestSubscriber.h
-        ../../BartaEngine/include/Geometrics/Quaternion.h
 )
 
-if(WIN32)
+if(WIN32 AND USE_SFML)
     add_custom_command(
             TARGET ${PROJECT_NAME}
             COMMENT "Copy OpenAL DLL"

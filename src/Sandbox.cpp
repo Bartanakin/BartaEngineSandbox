@@ -1,7 +1,10 @@
 #include "Sandbox.h"
 #include "Collisions/CollisionDetectionStrategies/DynamicCollisionDetectionStrategy.h"
 #include "Dynamics/ConstVelocityDynamicsUpdateStrategy.h"
+#if USE_SFML
 #include "Graphics/SFML_GraphicsBridge.h"
+#endif
+
 #include "Hitbox/OBB_Hitbox.h"
 #include "Subscribers/TestSubscriber.h"
 
@@ -11,7 +14,6 @@
 #include <Collisions/CollisionDetectionStrategies/StaticCollisionDetectionStrategy.h>
 #include <Collisions/CollisionLogger.h>
 #include <Dynamics/Timers/FrameLimitTimerProxy.h>
-#include <Dynamics/Timers/SFML_Timer.h>
 #include <Events/Subscribers/CollisionResponseSubscriber.h>
 #include <Graphics/SpriteBuilder/SpriteMerger.h>
 #include <Hitbox/CircleHitbox.h>
@@ -22,15 +24,21 @@
 // Very important to include this file! There are template specialisation
 // definitions.
 #include "Events/Subscribers/CollisionBrakeSubscriber.h"
+#if USE_OPEN_GL
+#include "Graphics/OpenGL_Bridge.h"
+#endif
+
+#include "Dynamics/Timers/BartaTimer.h"
 
 #include <Predefines.h>
 
 std::unique_ptr<Barta::TimerInterface> Sandbox::gameTimer =
     std::make_unique<Barta::FrameLimitTimerProxy>(
-        std::make_unique<Barta::SFML_Timer>(), 0.0f);
+        std::make_unique<Barta::Dynamics::Timers::BartaTimer>(), 0.0f);
 
 Sandbox::Sandbox()
-    : Application("Sandbox", std::make_unique<Barta::SFML_GraphicsBridge>(),
+    : Application("Sandbox", std::make_unique<Barta::SFML_GraphicsBridge>(), // requires SFML
+    // : Application("Sandbox", std::make_unique<Barta::Graphics::OpenGL_Bridge::OpenGL_Bridge>(), // requires OpenGL
                   *Sandbox::gameTimer, nullptr,
                   // std::make_unique<Barta::DynamicCollisionDetectionStrategy>(
                   //     *Sandbox::gameTimer))
@@ -49,10 +57,10 @@ Sandbox::Sandbox()
   jsonDecoder.decode(json::parse(sceneFile));
 
   this->collisionEventsLogger.logSubscriber(std::make_shared<TestSubscriber>());
-    // collisions
-    this->collisionEventsLogger.logSubscriber(
-        std::make_unique<Barta::CollisionBrakeSubscriber<
-            Barta::RigidObjectInterface, Barta::RigidObjectInterface>>());
+  // collisions
+  this->collisionEventsLogger.logSubscriber(
+      std::make_unique<Barta::CollisionBrakeSubscriber<
+          Barta::RigidObjectInterface, Barta::RigidObjectInterface>>());
   this->collisionEventsLogger.logSubscriber(
       std::make_unique<Barta::StaticCollisionResponseSubscriberType<
           Barta::RigidObjectInterface, Barta::RigidObjectInterface>>());
