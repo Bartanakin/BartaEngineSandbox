@@ -84,6 +84,49 @@
         },
         "transformation": {}
       }
+    },
+    {
+      "type": "BARTA_RIGID_OBJECT",
+      "z_index": 0,
+      "transformation": {
+        "a14": 300,
+        "a24": 400,
+        "a34": 0
+      },
+      "sprites": [
+        {
+          "type": "TRIANGLE",
+          "vertex1": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "vertex2": {
+            "x": 60,
+            "y": 10,
+            "z": 0
+          },
+          "vertex3": {
+            "x": 40,
+            "y": -90,
+            "z": 0
+          },
+          "color": {
+            "r": 255,
+            "g": 0,
+            "b": 0
+          }
+        }
+      ],
+      "hitbox": {
+        "type": "CIRCLE",
+        "radius": 10.0,
+        "center": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      }
     }
   ]
 }
