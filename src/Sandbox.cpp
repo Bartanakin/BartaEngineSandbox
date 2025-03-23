@@ -25,7 +25,7 @@
 // definitions.
 #include "Events/Subscribers/CollisionBrakeSubscriber.h"
 #if USE_OPEN_GL
-#include "Graphics/OpenGL_Bridge.h"
+#include <Graphics/OpenGL_Bridge.h>
 #endif
 
 #include "Dynamics/Timers/BartaTimer.h"
@@ -37,8 +37,8 @@ std::unique_ptr<Barta::TimerInterface> Sandbox::gameTimer =
         std::make_unique<Barta::Dynamics::Timers::BartaTimer>(), 0.0f);
 
 Sandbox::Sandbox()
-    : Application("Sandbox", std::make_unique<Barta::SFML_GraphicsBridge>(), // requires SFML
-    // : Application("Sandbox", std::make_unique<Barta::Graphics::OpenGL_Bridge::OpenGL_Bridge>(), // requires OpenGL
+    // : Application("Sandbox", std::make_unique<Barta::SFML_GraphicsBridge>(), // requires SFML
+    : Application("Sandbox", std::make_unique<Barta::Graphics::OpenGL_Bridge::OpenGL_Bridge>(), // requires OpenGL
                   *Sandbox::gameTimer, nullptr,
                   // std::make_unique<Barta::DynamicCollisionDetectionStrategy>(
                   //     *Sandbox::gameTimer))
