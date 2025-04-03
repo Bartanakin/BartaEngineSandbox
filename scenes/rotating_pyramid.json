@@ -1,0 +1,182 @@
+{
+  "objects": [
+    {
+      "type": "BARTA_RIGID_OBJECT",
+      "z_index": 0,
+      "dynamicsData": {
+        "massCenter": {
+          "x": 50,
+          "y": 50,
+          "z": 0
+        },
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": {
+          "angle": 0.78,
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "angularVelocity": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "hasInfiniteMass": false,
+        "inverseMass": 1
+      },
+      "sprites": [
+        {
+          "type": "TRIANGLE",
+          "vertex1": {
+            "x": 0,
+            "y": 0,
+            "z": 60
+          },
+          "vertex2": {
+            "x": -20,
+            "y": -20,
+            "z": 0
+          },
+          "vertex3": {
+            "x": 20,
+            "y": -20,
+            "z": 0
+          },
+          "color": {
+            "r": 255,
+            "g": 255,
+            "b": 0
+          }
+        },
+        {
+          "type": "TRIANGLE",
+          "vertex1": {
+            "x": 0,
+            "y": 0,
+            "z": 60
+          },
+          "vertex2": {
+            "x": 20,
+            "y": -20,
+            "z": 0
+          },
+          "vertex3": {
+            "x": 20,
+            "y": 20,
+            "z": 0
+          },
+          "color": {
+            "r": 255,
+            "g": 0,
+            "b": 0
+          }
+        },
+        {
+          "type": "TRIANGLE",
+          "vertex1": {
+            "x": 0,
+            "y": 0,
+            "z": 60
+          },
+          "vertex2": {
+            "x": 20,
+            "y": 20,
+            "z": 0
+          },
+          "vertex3": {
+            "x": -20,
+            "y": 20,
+            "z": 0
+          },
+          "color": {
+            "r": 0,
+            "g": 255,
+            "b": 0
+          }
+        },
+        {
+          "type": "TRIANGLE",
+          "vertex1": {
+            "x": 0,
+            "y": 0,
+            "z": 60
+          },
+          "vertex2": {
+            "x": -20,
+            "y": 20,
+            "z": 0
+          },
+          "vertex3": {
+            "x": -20,
+            "y": -20,
+            "z": 0
+          },
+          "color": {
+            "r": 255,
+            "g": 0,
+            "b": 255
+          }
+        },
+        {
+          "type": "TRIANGLE",
+          "vertex1": {
+            "x": -20,
+            "y": -20,
+            "z": 0
+          },
+          "vertex3": {
+            "x": 20,
+            "y": -20,
+            "z": 0
+          },
+          "vertex2": {
+            "x": 20,
+            "y": 20,
+            "z": 0
+          },
+          "color": {
+            "r": 150,
+            "g": 150,
+            "b": 150
+          }
+        },
+        {
+          "type": "TRIANGLE",
+          "vertex1": {
+            "x": 20,
+            "y": 20,
+            "z": 0
+          },
+          "vertex3": {
+            "x": -20,
+            "y": 20,
+            "z": 0
+          },
+          "vertex2": {
+            "x": -20,
+            "y": -20,
+            "z": 0
+          },
+          "color": {
+            "r": 150,
+            "g": 150,
+            "b": 150
+          }
+        }
+      ],
+      "hitbox": {
+        "type": "CIRCLE",
+        "radius": 10.0,
+        "center": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      }
+    }
+  ]
+}

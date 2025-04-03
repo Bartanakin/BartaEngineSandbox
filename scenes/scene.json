@@ -1,116 +1,25 @@
 {
   "objects": [
     {
-      "type": "BARTA_RIGID_OBJECT",
+      "type": "BARTA_SOFT_OBJECT",
+      "meshType": "msh",
+      "sourceFileName": "gmsh_example.msh",
       "z_index": 0,
-      "transformation": {
-        "a14": 50,
-        "a24": 50,
-        "a34": 0
-      },
+      "sprites": [],
       "dynamicsData": {
+        "massCenter": {
+          "x": 50,
+          "y": 50,
+          "z": 0
+        },
         "velocity": {
           "x": 0,
           "y": 0,
           "z": 0
         },
         "hasInfiniteMass": false,
-        "mass": 1
+        "inverseMass": 1
       },
-      "sprites": [
-        {
-          "type": "TRIANGLE",
-          "vertex1": {
-            "x": 0,
-            "y": 0,
-            "z": 60
-          },
-          "vertex2": {
-            "x": -20,
-            "y": -20,
-            "z": 0
-          },
-          "vertex3": {
-            "x": 20,
-            "y": -20,
-            "z": 0
-          },
-          "color": {
-            "r": 255,
-            "g": 255,
-            "b": 0
-          }
-        },
-        {
-          "type": "TRIANGLE",
-          "vertex1": {
-            "x": 0,
-            "y": 0,
-            "z": 60
-          },
-          "vertex2": {
-            "x": 20,
-            "y": -20,
-            "z": 0
-          },
-          "vertex3": {
-            "x": 20,
-            "y": 20,
-            "z": 0
-          },
-          "color": {
-            "r": 255,
-            "g": 0,
-            "b": 0
-          }
-        },
-        {
-          "type": "TRIANGLE",
-          "vertex1": {
-            "x": 0,
-            "y": 0,
-            "z": 60
-          },
-          "vertex2": {
-            "x": 20,
-            "y": 20,
-            "z": 0
-          },
-          "vertex3": {
-            "x": -20,
-            "y": 20,
-            "z": 0
-          },
-          "color": {
-            "r": 0,
-            "g": 255,
-            "b": 0
-          }
-        },
-        {
-          "type": "TRIANGLE",
-          "vertex1": {
-            "x": 0,
-            "y": 0,
-            "z": 60
-          },
-          "vertex2": {
-            "x": -20,
-            "y": 20,
-            "z": 0
-          },
-          "vertex3": {
-            "x": -20,
-            "y": -20,
-            "z": 0
-          },
-          "color": {
-            "r": 255,
-            "g": 0,
-            "b": 255
-          }
-        }
-      ],
       "hitbox": {
         "type": "CIRCLE",
         "radius": 10.0,
