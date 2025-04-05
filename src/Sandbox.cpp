@@ -1,6 +1,5 @@
 #include "Sandbox.h"
 #include "Collisions/CollisionDetectionStrategies/DynamicCollisionDetectionStrategy.h"
-#include "Dynamics/ConstVelocityDynamicsUpdateStrategy.h"
 #if USE_SFML
 #include "Graphics/SFML_GraphicsBridge.h"
 #endif
@@ -29,7 +28,7 @@
 #endif
 
 #include "Dynamics/Timers/BartaTimer.h"
-
+#include "Events/Subscribers/CameraTransformationSubscriber.h"
 #include <Predefines.h>
 
 std::unique_ptr<Barta::TimerInterface> Sandbox::gameTimer =
@@ -39,18 +38,15 @@ std::unique_ptr<Barta::TimerInterface> Sandbox::gameTimer =
 Sandbox::Sandbox()
     // : Application("Sandbox", std::make_unique<Barta::SFML_GraphicsBridge>(), // requires SFML
     : Application("Sandbox", std::make_unique<Barta::Graphics::OpenGL_Bridge::OpenGL_Bridge>(), // requires OpenGL
-                  *Sandbox::gameTimer, nullptr,
+                  *Sandbox::gameTimer,
                   // std::make_unique<Barta::DynamicCollisionDetectionStrategy>(
                   //     *Sandbox::gameTimer))
-                  std::make_unique<Barta::StaticCollisionDetectionStrategy>()) {
-  this->dynamicsUpdateStrategy =
-      std::make_unique<Barta::ConstVelocityDynamicsUpdateStrategy<
-          Barta::DynamicsAwareInterface::DynamicsAwareList>>(
-          this->objectManager->getDynamicsList());
+                  std::make_unique<Barta::StaticCollisionDetectionStrategy>(),
+          Barta::PredefinedUpdateStrategyManager(Barta::Dynamics::UpdateStrategy::ExplicitEulerStrategy(), Barta::Dynamics::UpdateStrategy::SoftBodyStrategy())) {
   // json decoder configuration
   auto jsonDecoder = Barta::SceneLoader::RootJsonDecoder<
-      Barta::SceneLoader::ObjectJsonDecoderManager<Barta::RigidObjectInterface>,
-      Barta::ListManager>(this->objectLists, *this->objectManager);
+      Barta::SceneLoader::ObjectJsonDecoderManager<Barta::RigidObjectInterface, Barta::Objects::Soft::SoftObject>,
+      Barta::ListManager, Barta::BartaEventLoggerInterface>(this->objectLists, *this->objectManager, *this->eventLogger);
 
   // scene file
   std::fstream sceneFile("scenes/scene.json");
@@ -64,6 +60,9 @@ Sandbox::Sandbox()
   this->collisionEventsLogger.logSubscriber(
       std::make_unique<Barta::StaticCollisionResponseSubscriberType<
           Barta::RigidObjectInterface, Barta::RigidObjectInterface>>());
+
+
+    this->eventLogger->logSubscriber(std::make_unique<Barta::Events::Subscribers::CameraTransformationSubscriber>(*this->graphicsBridge));
 }
 
 Sandbox::~Sandbox() {}

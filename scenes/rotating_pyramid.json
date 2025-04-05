@@ -1,4 +1,21 @@
 {
+  "camera": {
+    "eye": {
+      "x": 100,
+      "y": 100,
+      "z": 50
+    },
+    "center": {
+      "x": 50,
+      "y": 50,
+      "z": 0
+    },
+    "up": {
+      "x": 0,
+      "y": 0,
+      "z": 1
+    }
+  },
   "objects": [
     {
       "type": "BARTA_RIGID_OBJECT",

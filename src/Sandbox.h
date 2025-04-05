@@ -5,7 +5,7 @@
 
 class Sandbox
     : public Barta::Application<Barta::DefaultCollisionLogger, Barta::CollisionEventsLogger,
-                                Barta::ListManager, Barta::CollisionCoreExecutor> {
+                                Barta::ListManager, Barta::CollisionCoreExecutor, Barta::PredefinedUpdateStrategyManager> {
 public:
   Sandbox();
   Sandbox(const Sandbox &) = delete;
