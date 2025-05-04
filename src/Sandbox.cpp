@@ -27,6 +27,8 @@
 #include <Graphics/OpenGL_Bridge.h>
 #endif
 
+#include "Dynamics/Mass/ConstantPointMassDistributionCalculator.h"
+#include "Dynamics/SoftBody/StVenantKirchhoffDynamics.h"
 #include "Dynamics/Timers/BartaTimer.h"
 #include "Events/Subscribers/CameraTransformationSubscriber.h"
 #include <Predefines.h>
@@ -42,7 +44,10 @@ Sandbox::Sandbox()
                   // std::make_unique<Barta::DynamicCollisionDetectionStrategy>(
                   //     *Sandbox::gameTimer))
                   std::make_unique<Barta::StaticCollisionDetectionStrategy>(),
-          Barta::PredefinedUpdateStrategyManager(Barta::Dynamics::UpdateStrategy::ExplicitEulerStrategy(), Barta::Dynamics::UpdateStrategy::SoftBodyStrategy())) {
+            Barta::PredefinedUpdateStrategyManager(Barta::Dynamics::UpdateStrategy::ExplicitEulerStrategy(), Barta::Dynamics::UpdateStrategy::SoftBodyStrategy(
+                std::make_unique<Barta::Dynamics::SoftBody::StVenantKirchhoffDynamics>(),
+                std::make_unique<Barta::Dynamics::Mass::ConstantPointMassDistributionCalculator>()
+            ))) {
   // json decoder configuration
   auto jsonDecoder = Barta::SceneLoader::RootJsonDecoder<
       Barta::SceneLoader::ObjectJsonDecoderManager<Barta::RigidObjectInterface, Barta::Objects::Soft::SoftObject>,

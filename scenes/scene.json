@@ -20,6 +20,7 @@
     {
       "type": "BARTA_SOFT_OBJECT",
       "meshType": "msh",
+      "density": 1,
       "sourceFileName": "gmsh_example.msh",
       "z_index": 0,
       "sprites": [],
