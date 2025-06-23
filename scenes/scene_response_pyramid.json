@@ -1,0 +1,108 @@
+{
+  "camera": {
+    "eye": {
+      "x": 100,
+      "y": 50,
+      "z": 80
+    },
+    "center": {
+      "x": 50,
+      "y": 50,
+      "z": 0
+    },
+    "up": {
+      "x": 0,
+      "y": 0,
+      "z": 1
+    }
+  },
+  "objects": [
+    {
+      "type": "BARTA_RIGID_OBJECT",
+      "z_index": 0,
+      "dynamicsData": {
+        "massCenter": {
+          "x": 30,
+          "y": 30,
+          "z": 60
+        },
+        "velocity": {
+          "x": 5,
+          "y": 5,
+          "z": 0
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 1,
+          "angle": 0
+        },
+        "hasInfiniteMass": false,
+        "inverseMass": 0.1
+      },
+      "sprites": [
+        {
+          "type": "BALL",
+          "radius": 8.0,
+          "meshDensity": 1,
+          "center": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "color": {
+            "r": 255,
+            "g": 0,
+            "b": 0
+          }
+        }
+      ],
+      "hitbox": {
+        "type": "BALL",
+        "radius": 8.0,
+        "center": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      }
+    },
+
+    {
+      "type": "BARTA_SOFT_OBJECT",
+      "meshType": "msh",
+      "sourceFileName": "gmsh_example.msh",
+      "z_index": 0,
+      "sprites": [],
+      "dynamicsData": {
+        "massCenter": {
+          "x": 50,
+          "y": 50,
+          "z": 0
+        },
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 1,
+          "angle": 0
+        },
+        "hasInfiniteMass": false,
+        "inverseMass": 1
+      },
+      "hitbox": {
+        "type": "CIRCLE",
+        "radius": 10.0,
+        "center": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      }
+    }
+  ]
+}

@@ -1,5 +1,8 @@
 #pragma once
 #include "Constants.h"
+#include "Dynamics/Mass/ConstantPointMassDistributionCalculator.h"
+#include "Dynamics/SoftBody/StVenantKirchhoffDynamics.h"
+
 #include <Application.h>
 #include <Predefines.h>
 
@@ -15,4 +18,6 @@ public:
 
 private:
   static std::unique_ptr<Barta::TimerInterface> gameTimer;
+  Barta::Dynamics::Mass::ConstantPointMassDistributionCalculator massCalculator;
+  Barta::Dynamics::SoftBody::StVenantKirchhoffDynamics softDynamics;
 };

@@ -1,9 +1,5 @@
-//
-// Created by bartanakin on 10/27/24.
-//
-
 #pragma once
-#include <Objects/Rigid/RigidObjectCollisionSubscriber.h>
+#include <Objects/CollisionSubscribers/RigidObjectCollisionSubscriber.h>
 
 class TestSubscriber: public Barta::Subscribers::RigidObjectRigidObject {
 public:

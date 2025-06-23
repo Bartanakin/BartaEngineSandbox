@@ -4,5 +4,6 @@ out
 .idea
 .vs
 .vscode
+scenes/scene.json
 src/env.h
 cmake-build-debug

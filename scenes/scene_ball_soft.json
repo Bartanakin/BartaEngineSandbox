@@ -1,0 +1,58 @@
+{
+  "camera": {
+    "eye": {
+      "x": 100,
+      "y": 50,
+      "z": 120
+    },
+    "center": {
+      "x": 50,
+      "y": 50,
+      "z": 0
+    },
+    "up": {
+      "x": 0,
+      "y": 0,
+      "z": 1
+    }
+  },
+  "objects": [
+    {
+      "type": "BARTA_SOFT_OBJECT",
+      "meshType": "msh",
+      "density": 1,
+      "sourceFileName": "gmsh_example.msh",
+      "z_index": 0,
+      "sprites": [],
+      "dynamicsData": {
+        "massCenter": {
+          "x": 50,
+          "y": 50,
+          "z": 0
+        },
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 1,
+          "angle": 0.71
+        },
+        "hasInfiniteMass": false,
+        "inverseMass": 1
+      },
+      "hitbox": {
+        "type": "CIRCLE",
+        "radius": 10.0,
+        "center": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      }
+    }
+  ]
+}
